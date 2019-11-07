@@ -1,0 +1,10 @@
+{
+  "name": "fg-slackbot",
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.rb",
+      "use": "@now/sinatra"
+    }
+  ]
+}
