@@ -23,11 +23,17 @@ post '/events' do
     # Notify when a new channel is created.
     if event['type'] == 'channel_created'
       client = create_slack_client(ENV['OAUTH_ACCESS_TOKEN'])
+      channel_id = request_data['event']['channel']['id']
+
+      channel_info = client.channels_info(channel: channel_id)
+      channel_purpose = channel_info.channel.purpose.value
+
       client.chat_postMessage(
         as_user: 'false',
         channel: '#new_channel_test',
-        text: ":satellite_antenna: <!here> New channel created: <##{request_data['event']['channel']['id']}> by: <@#{request_data['event']['channel']['creator']}>"
+        text: ":satellite_antenna: <!here> New channel created: <##{request_data['event']['channel']['id']}> by: <@#{request_data['event']['channel']['creator']}>\nDescription: #{channel_purpose}"
       )
+
       "Posted in slack"
     else
       "Upsupported event type"
