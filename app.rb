@@ -28,7 +28,12 @@ post '/events' do
         channel: '#new_channel_test',
         text: ":satellite_antenna: <!here> New channel created: <##{request_data['event']['channel']['id']}> by: <@#{request_data['event']['channel']['creator']}>"
       )
+      "Posted in slack"
+    else
+      "Upsupported event type"
     end
+  else
+    "Unsupported request data type"
   end
 end
 
