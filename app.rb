@@ -26,7 +26,7 @@ post '/events' do
       client.chat_postMessage(
         as_user: 'false',
         channel: '#new_channel_test',
-        text: ":satellite_antenna: <!here> New channel created: <##{request_data['event']['channel']['id']}> by: <@#{request_data['event']['channel']['creator']}>"
+        text: ":satellite_antenna: <!here> New channel created: <##{request_data['event']['channel']['id']}> by: <@#{request_data['event']['channel']['creator']}>\nDescription: #{request_data['event']['channel']}"
       )
     end
   end
