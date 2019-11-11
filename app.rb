@@ -43,6 +43,10 @@ post '/events' do
   end
 end
 
+get '/health_check' do
+  "All good"
+end
+
 def create_slack_client(slack_api_secret)
   Slack.configure do |config|
     config.token = slack_api_secret
